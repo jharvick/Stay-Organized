@@ -59,9 +59,48 @@
             background-color: #000;
             border: 1px solid #39ff14; 
         }
+        .navbar {
+            background-color: #000;
+            border-bottom: 1px solid #39ff14;
+        }
+        .navbar-brand, .nav-link {
+            color: #39ff14 !important;
+        }
+        .navbar-brand:hover, .nav-link:hover {
+            color: #0d8800;
+        }
+        .navbar-toggler {
+            border-color: #39ff14;
+        }
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='%2339ff14' viewBox='0 0 30 30'%3E%3Cpath stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        }
+        .navbar-nav .nav-item:not(:last-child) {
+            border-right: 1px solid #39ff14;
+            padding-right: 10px;
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="index.html">Stay Organized</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="todos.html">View ToDo List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="new_todo.html">Add New ToDo</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div id="successMessage" style="display: none;">
         <div class="success-text">ToDo added successfully</div>
         <img src="/Users/jared.harvick/Apprenti/Stay-Organized/stay-organized-workshop-express-server/assets/thumb-up.gif" alt="Success">
