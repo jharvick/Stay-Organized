@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function fetchUsers() {
         const defaultOption = document.createElement('option');
         defaultOption.value = '';
-        defaultOption.textContent = 'Select user';
+        defaultOption.textContent = 'Select settler';
         userSelect.appendChild(defaultOption);
 
         fetch('http://localhost:8083/api/users')

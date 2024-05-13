@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>ToDo Details</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #39ff14;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #39ff14;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        .card {
+            background-color: #000;
+            border: 1px solid #39ff14; 
+            color: #39ff14;
+            margin: auto;
+            max-width: 400px;
+        }
+
+        .card-header {
+            background-color: #39ff14;
+            color: #000;
+        }
+
+        .btn-primary {
+            background-color: #39ff14;
+            border-color: #39ff14;
+            font-size: 1rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            text-transform: uppercase;
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background-color: #0d8800;
+            border-color: #0d8800;
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center">
+        <h1 class="mt-4">ToDo Details</h1>
+        <div id="todoDetails" class="mt-4"></div>
+        <button id="goBackBtn" class="btn btn-primary mt-3">Go Back to ToDo List</button>
+    </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="todo_details.js"></script>
+</body>
+</html>
