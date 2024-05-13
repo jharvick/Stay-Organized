@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const confirmPasswordInput = document.getElementById('confirmPassword');
     const usernameError = document.getElementById('usernameError');
     const passwordError = document.getElementById('passwordError');
+    const successMessage = document.getElementById('successMessage');
 
     registerForm.addEventListener('submit', function(event) {
         event.preventDefault();
@@ -22,9 +23,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         fetch(`http://localhost:8083/api/username_available/${username}`)
-            .then(response => response.json()) // parse the response as JSON
+            .then(response => response.json())
             .then(response => {
-                if (response.available) { // check the 'available' property of the response
+                if (response.available) {
                     usernameError.textContent = '';
                     const userData = {
                         name: name,
@@ -50,8 +51,16 @@ document.addEventListener('DOMContentLoaded', function() {
                         return response.json();
                     })
                     .then(user => {
-                        alert('User registered successfully');
-                        registerForm.reset();
+                        // Show the success message
+                        successMessage.style.display = 'block';
+                        registerForm.classList.add('dimmed'); // Add dimmed class to form
+
+                        // Optionally, reset the form and hide the success message after a delay
+                        setTimeout(() => {
+                            registerForm.reset();
+                            successMessage.style.display = 'none';
+                            registerForm.classList.remove('dimmed'); // Remove dimmed class from form
+                        }, 5000); // Adjust the delay as needed (in milliseconds)
                     })
                     .catch(error => {
                         usernameError.textContent = error.message;
