@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Stay Organized</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #39ff14;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 14px;
+        }
+        .container {
+            margin-top: 30px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #39ff14;
+            text-shadow: 1px 1px 2px #000;
+        }
+        label {
+            color: #39ff14;
+        }
+        .form-control {
+            background-color: #000;
+            color: #39ff14;
+            border: 1px solid #39ff14;
+        }
+        .form-control:focus {
+            background-color: #000;
+            color: #39ff14;
+            border: 1px solid #39ff14;
+            box-shadow: none;
+        }
+        .btn-primary {
+            background-color: #39ff14;
+            border-color: #39ff14;
+            font-size: 1rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            text-transform: uppercase;
+            color: #000;
+        }
+        .btn-primary:hover {
+            background-color: #0d8800;
+            border-color: #0d8800;
+        }
+        .card {
+            background-color: #000;
+            border: 1px solid #39ff14; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4">ToDo List</h1>
+        <div class="form-group">
+            <label for="userSelect">Select a user to view ToDos:</label>
+            <select class="form-control" id="userSelect">
+                <!-- Will be populated dynamically through JS -->
+            </select>
+        </div>
+        <div id="todoList" class="row">
+            <!-- Will be populated dynamically through JS -->
+        </div>    
+    </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="todos.js"></script>
+</body>
+</html>
