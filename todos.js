@@ -46,9 +46,36 @@ document.addEventListener('DOMContentLoaded', function () {
                         </div>
                     `;
                     todoList.appendChild(card);
+            
+                    if (!todo.completed) {
+                        const button = document.createElement('button');
+                        button.classList.add('btn', 'btn-primary');
+                        button.textContent = 'Complete ToDo';
+                        button.addEventListener('click', () => completeTodo(todo.id));
+                        card.querySelector('.card-body').appendChild(button);
+                    }
                 });
             })
             .catch(error => console.error(error));
+    }
+
+    function completeTodo(todoId) {
+        fetch(`http://localhost:8083/api/todos/${todoId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ completed: true })
+        })
+        .then(response => {
+            if (response.ok) {
+                const userId = userSelect.value;
+                fetchTodos(userId);
+            } else {
+                console.error('Failed to complete ToDo');
+            }
+        })
+        .catch(error => console.error(error));
     }
 
     fetchUsers();
