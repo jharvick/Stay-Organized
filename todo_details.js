@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const todoDetails = document.getElementById('todoDetails');
     const backButton = document.getElementById('goBackBtn');
 
-    // Function to fetch and display ToDo details
     function fetchTodoDetails() {
         const urlParams = new URLSearchParams(window.location.search);
         const todoId = urlParams.get('id');
@@ -15,10 +14,8 @@ document.addEventListener('DOMContentLoaded', function () {
         fetch(`http://localhost:8083/api/todos/${todoId}`)
             .then(response => response.json())
             .then(todo => {
-                // Clear existing content
                 todoDetails.innerHTML = '';
 
-                // Create card for ToDo details
                 const card = document.createElement('div');
                 card.classList.add('card', 'col-md-4', 'mb-4');
                 card.innerHTML = `
@@ -27,27 +24,25 @@ document.addEventListener('DOMContentLoaded', function () {
                         <p class="card-text">${todo.description}</p>
                         <p class="card-text">Deadline: ${todo.deadline}</p>
                         <p class="card-text">Priority: ${todo.priority}</p>
-                        <p class="card-text">${todo.completed ? '&#10004;' : '&#10008;'}</p>
+                        <p class="card-text">${todo.completed ? '<span style="font-size: 30px;">&#10004;</span>' : '<span style="font-size: 30px; color: red;">&#10008;</span>'}</p>
                     </div>
                 `;
 
-                // Add complete button if ToDo is not completed
                 if (!todo.completed) {
                     const button = document.createElement('button');
                     button.classList.add('btn', 'btn-primary');
                     button.textContent = 'Complete ToDo';
-                    button.addEventListener('click', () => completeTodo(todoId)); // Pass todoId here
+                    button.addEventListener('click', () => completeTodo(todoId));
                     card.querySelector('.card-body').appendChild(button);
                 }
 
-                // Append card to the todoDetails container
+
                 todoDetails.appendChild(card);
             })
             .catch(error => console.error(error));
     }
 
-    // Function to mark ToDo as completed
-    function completeTodo(todoId) { // Accept todoId as a parameter
+    function completeTodo(todoId) { 
         fetch(`http://localhost:8083/api/todos/${todoId}`, {
             method: 'PUT',
             headers: {
@@ -57,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(response => {
             if (response.ok) {
-                fetchTodoDetails(); // Refresh details after completion
+                fetchTodoDetails();
             } else {
                 console.error('Failed to complete ToDo');
             }
@@ -74,8 +69,5 @@ document.addEventListener('DOMContentLoaded', function () {
         window.location.href = `todos.html?userId=${userId}`; // Navigate back to todos.html with userId
     });
 
-
-    // Initial call to fetch and display ToDo details
     fetchTodoDetails();
 });
-

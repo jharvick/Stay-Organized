@@ -53,23 +53,20 @@ label {
     border: 1px solid #39ff14; 
 }
 
-/* Add this CSS to dim the form */
 .dimmed {
     position: relative;
-    opacity: 0.5; /* Adjust the opacity to your preference */
-    pointer-events: none; /* Prevent interaction with the form */
+    opacity: 0.5;
+    pointer-events: none;
 }
 
-/* Style for the success message */
-/* Add these styles to your existing CSS */
 #successMessage {
-    display: none; /* Hide initially */
+    display: none;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 1000; /* Ensure it's above other elements */
-    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.8);
     padding: 20px;
     border-radius: 10px;
 }
@@ -78,13 +75,12 @@ label {
     color: #39ff14;
     font-size: 24px;
     margin-bottom: 20px;
-    text-align: center; /* Center the text */
+    text-align: center;
 }
 
-/* Center the GIF */
 #successMessage img {
-    display: block; /* Ensure the image is a block element */
-    margin: 0 auto; /* Center horizontally */
+    display: block;
+    margin: 0 auto;
 }
 .navbar {
     background-color: #000;

@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (sessionStorage.getItem('navigatingBack') === 'true') {
                     userSelect.value = userId;
                     fetchTodos(userId);
-                    sessionStorage.removeItem('navigatingBack'); // Remove the navigatingBack flag
+                    sessionStorage.removeItem('navigatingBack');
                 }
             })
             .catch(error => console.error(error));
@@ -42,53 +42,28 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => response.json())
             .then(todos => {
                 todoList.innerHTML = '';
-                todos.forEach(todo => {
-                    const card = document.createElement('div');
-                    card.classList.add('col-md-4', 'mb-4');
-                    card.innerHTML = `
-                        <div class="card text-center">
-                            <div class="card-body">
-                                <h5 class="card-title">${todo.category}</h5>
-                                <p class="card-text">Deadline: ${todo.deadline}</p>
-                                <p class="card-text">${todo.completed ? '&#10004;' : '&#10008;'}</p>
-                                <div>
-                                    <a href="todo_details.html?userId=${userId}&id=${todo.id}" class="card-link">See Details</a>
-                                <div>
+                todos.forEach((todo, index) => {
+                    setTimeout(() => {
+                        const card = document.createElement('div');
+                        card.classList.add('col-md-4', 'mb-4', 'fade-in');
+                        card.innerHTML = `
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <h5 class="card-title">${todo.category}</h5>
+                                    <p class="card-text">Deadline: ${todo.deadline}</p>
+                                    <p class="card-text">${todo.completed ? '<span style="font-size: 30px;">&#10004;</span>' : '<span style="font-size: 30px; color: red;">&#10008;</span>'}</p>
+                                    <div>
+                                        <a href="todo_details.html?userId=${userId}&id=${todo.id}" class="card-link" style="color: #39ff14; text-decoration: underline;">See Details</a>
+                                    <div>
+                                </div>
                             </div>
-                        </div>
-                    `;
-                    todoList.appendChild(card);
-            
-                    // if (!todo.completed) {
-                    //     const button = document.createElement('button');
-                    //     button.classList.add('btn', 'btn-primary');
-                    //     button.textContent = 'Complete ToDo';
-                    //     button.addEventListener('click', () => completeTodo(todo.id));
-                    //     card.querySelector('.card-body').appendChild(button);
-                    // }
+                        `;
+                        todoList.appendChild(card);
+                    }, index * 100); // Delay each card by 100ms
                 });
             })
             .catch(error => console.error(error));
     }
-
-    // function completeTodo(todoId) {
-    //     fetch(`http://localhost:8083/api/todos/${todoId}`, {
-    //         method: 'PUT',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify({ completed: true })
-    //     })
-    //     .then(response => {
-    //         if (response.ok) {
-    //             const userId = userSelect.value;
-    //             fetchTodos(userId);
-    //         } else {
-    //             console.error('Failed to complete ToDo');
-    //         }
-    //     })
-    //     .catch(error => console.error(error));
-    // }
-
     fetchUsers();
 });
+
