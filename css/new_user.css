@@ -91,3 +91,12 @@ label {
     display: block; /* Ensure the image is a block element */
     margin: 0 auto; /* Center horizontally */
 }
+.circular-image {
+    border-radius: 50%; /* This makes the image circular */
+    overflow: hidden; /* This hides anything outside the circle */
+    width: 225px; /* Adjust the size as needed */
+    height: 225px; /* Adjust the size as needed */
+}
+.success-border {
+    border: 2px solid #39FF14; /* Adjust the border width and color as needed */
+}

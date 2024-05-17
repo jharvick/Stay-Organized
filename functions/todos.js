@@ -22,11 +22,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 const urlParams = new URLSearchParams(window.location.search);
                 const userId = urlParams.get('userId');
 
-                // If we're navigating back from the todo details page, select the user in the dropdown and fetch their todos
-                if (sessionStorage.getItem('navigatingBack') === 'true') {
-                    userSelect.value = userId;
-                    fetchTodos(userId);
-                    sessionStorage.removeItem('navigatingBack');
+                // If we're navigating back from the todo details page we automatically populate the user select
+                if (sessionStorage.getItem('navigatingBack') === 'true') { // Check if the navigatingBack flag is set to true
+                    userSelect.value = userId; // Set the value of the user select to the userId from the URL parameters
+                    fetchTodos(userId); // Fetch the todos for the selected user
+                    sessionStorage.removeItem('navigatingBack'); // Remove the navigatingBack flag from sessionStorage
                 }
             })
             .catch(error => console.error(error));

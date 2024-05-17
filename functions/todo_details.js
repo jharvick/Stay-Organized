@@ -62,11 +62,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Event listener for back button
     backButton.addEventListener('click', function () {
-        const urlParams = new URLSearchParams(window.location.search);
-        const userId = urlParams.get('userId');
-        console.log("User ID:", userId); // Log the userId
-        sessionStorage.setItem('navigatingBack', 'true'); // Set the navigatingBack flag
-        window.location.href = `todos.html?userId=${userId}`; // Navigate back to todos.html with userId
+        const urlParams = new URLSearchParams(window.location.search); // Create new URLSearchParams object
+        const userId = urlParams.get('userId'); // Get the value of userId from the URLSearchParams object
+        sessionStorage.setItem('navigatingBack', 'true'); // Set the navigatingBack flag in sessionStorage to true
+        window.location.href = `todos.html?userId=${userId}`; // Navigate back to todos.html with userId with a query parameter
     });
 
     fetchTodoDetails();
